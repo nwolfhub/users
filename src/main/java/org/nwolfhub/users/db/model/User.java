@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Entity
+@Table(schema = "users")
 public class User {
     @Id
     public String id;
