@@ -11,6 +11,8 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class UserService {
@@ -34,6 +36,11 @@ public class UserService {
                 if(object.has("family_name")) user.setFamilyName(object.get("family_name").getAsString());
                 if(object.has("name")) user.setName(object.get("name").getAsString());
                 if(object.has("email")) user.setEmail(object.get("email").getAsString());
+                if(object.has("groups")) {
+                    List<String> groups = new ArrayList<>();
+                    object.get("groups").getAsJsonArray().forEach(group -> groups.add(group.getAsString()));
+                    user.setGroups(groups);
+                }
                 user.setId(jwt.getSubject());
                 return user;
             } else throw new IOException("Failed to contact keycloak: " + (response.body()!=null?response.body().string():response.code()));

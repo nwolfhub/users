@@ -20,6 +20,8 @@ repositories {
 dependencies {
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.google.code.gson:gson:2.11.0")
+    implementation("org.keycloak:keycloak-admin-client:25.0.2")
+    implementation("com.bucket4j:bucket4j-core:8.10.1")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-oauth2-resource-server")
     implementation("org.springframework.boot:spring-boot-starter-security")

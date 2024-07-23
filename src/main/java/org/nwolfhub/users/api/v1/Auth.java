@@ -1,4 +1,4 @@
-package org.nwolfhub.users.api;
+package org.nwolfhub.users.api.v1;
 
 import org.nwolfhub.users.JsonBuilder;
 import org.nwolfhub.users.UserService;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/v1/auth")
 public class Auth {
     private final UserRepository userRepository;
     private final UserService userService;
@@ -27,7 +27,7 @@ public class Auth {
     }
     private final Logger logger = LoggerFactory.getLogger(Auth.class);
 
-    @GetMapping("")
+    @GetMapping("/postLogin")
     public ResponseEntity<String> postLogin(@AuthenticationPrincipal Jwt jwt) {
         Optional<User> optionalUser = userRepository.findById(jwt.getSubject());
         if (optionalUser.isPresent()) {
