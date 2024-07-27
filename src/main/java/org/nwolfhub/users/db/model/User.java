@@ -21,6 +21,7 @@ public class User {
     @Column(length = 512)
     public String name;
     @Convert(converter = StringToListConverter.class)
+    @Column(length = 4096)
     public List<String> groups;
 
     public String getId() {
